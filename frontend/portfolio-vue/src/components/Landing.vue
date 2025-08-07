@@ -12,7 +12,8 @@
     </h1>
 
     <button @click="$emit('discover')" class="discover-btn">
-      Discover More
+      <span class="btn-text">Discover More</span>
+      <span class="arrow-icon">→</span>
     </button>
   </section>
 </template>
@@ -116,7 +117,8 @@ export default {
 }
 
 @keyframes blink {
-  from, to {
+  from,
+  to {
     border-color: transparent;
   }
   50% {
@@ -127,7 +129,7 @@ export default {
 /* === Button Styling === */
 .discover-btn {
   font-size: 1.25rem;
-  padding: 0.75rem 2.25rem;
+  padding: 0.75rem 2.5rem;
   border: none;
   border-radius: 30px;
   background: linear-gradient(135deg, #001f4d, #004080);
@@ -139,6 +141,11 @@ export default {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeSlideUp 2s ease forwards 3.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow: hidden;
+  position: relative;
 }
 
 @keyframes fadeSlideUp {
@@ -150,7 +157,26 @@ export default {
 
 .discover-btn:hover {
   background: linear-gradient(135deg, #003366, #003cb3);
-  box-shadow: 0 0 15px rgba(0, 119, 255, 0.8);
-  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 119, 255, 0.8);
+  transform: scale(1.07);
+}
+
+.btn-text {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.arrow-icon {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.4rem;
+  transform: translateX(-10px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.discover-btn:hover .arrow-icon {
+  transform: translateX(0);
+  opacity: 1;
 }
 </style>
